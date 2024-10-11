@@ -1,0 +1,50 @@
+{
+  "name": "responsive-app",
+  "version": "1.0.0-beta.0",
+  "description": "Core code for responsive app plugins, meant to be used in either Webpack or Rollup",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "exports": {
+    "import": "./dist/index.esm.mjs",
+    "require": "./dist/index.cjs.js"
+  },
+  "files": [
+    "dist/index.cjs.js",
+    "dist/index.cjs.js.map",
+    "dist/index.esm.mjs",
+    "dist/index.esm.mjs.map",
+    "types.d.ts",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "responsive",
+    "responsiveness",
+    "resolution",
+    "screen",
+    "size",
+    "ipad",
+    "mobile"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/arthursb2016/responsive-app"
+  },
+  "author": "Arthur Borba <artsborba@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/node": "^22.5.5",
+    "rollup": "^3.29.5",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "magic-string": "^0.30.11"
+  }
+}
