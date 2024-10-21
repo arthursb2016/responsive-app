@@ -19,10 +19,6 @@ function getMobileQueries(options: Options): string | null {
   
 }
 
-function getTransformationsPath(options: Options): string | undefined {
-  return typeof options.transformPixels === 'object' ? options.transformPixels.transformationsPath : undefined
-}
-
 export default (options: Options, code: string, id: string, transformations?: string) => {
   const magicString = new MagicString(code)
   const isHtmlFile = id.includes(indexHtmlFile)

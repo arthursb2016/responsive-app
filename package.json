@@ -1,7 +1,7 @@
 {
   "name": "responsive-app",
   "version": "1.0.0-beta.0",
-  "description": "Core code for responsive app plugins, meant to be used in either Webpack or Rollup",
+  "description": "Core functionalities for plugins that will automatically handle your app responsiveness",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
   "exports": {
@@ -31,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "hhttps://github.com/arthursb2016/responsive-app"
+    "url": "https://github.com/arthursb2016/responsive-app"
   },
   "author": "Arthur Borba <artsborba@gmail.com>",
   "license": "MIT",
