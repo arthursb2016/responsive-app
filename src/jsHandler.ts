@@ -19,15 +19,19 @@ function getMobileQueries(options: Options): string | null {
   
 }
 
-export default (options: Options, code: string, id: string) => {
+function getTransformationsPath(options: Options): string | undefined {
+  return typeof options.transformPixels === 'object' ? options.transformPixels.transformationsPath : undefined
+}
+
+export default (options: Options, code: string, id: string, transformations?: string) => {
   const magicString = new MagicString(code)
   const isHtmlFile = id.includes(indexHtmlFile)
   const mobileQueries = getMobileQueries(options)
   if (isHtmlFile) {
     const index = code.indexOf('</body>')
-    magicString.prependLeft(index, `<script>${getResponsiveScript(mobileQueries)}</script>`)
+    magicString.prependLeft(index, `<script>${getResponsiveScript(mobileQueries, transformations)}</script>`)
   } else {
-    magicString.append(`\n\n(function() {\n${getResponsiveScript(mobileQueries)}\n}())`)
+    magicString.append(`\n\n(function() {\n${getResponsiveScript(mobileQueries, transformations)}\n}())`)
   }
 
   return {

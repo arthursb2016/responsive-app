@@ -145,6 +145,7 @@ export default (options: Options, code: string, id: string) => {
 
     return {
       code: magicString.toString(),
+      transformations: transformedCode,
       map: magicString.generateMap({
         source: id,
         file: id,
