@@ -2,16 +2,14 @@
 Core functionalities for plugins that will automatically handle your app responsiveness.
 You must install a wrapper plugin to use it:
 
-[Rollup](https://www.npmjs.com/package/rollup-plugin-responsive-app) or [Webpack](https://www.npmjs.com/package/webpack-plugin-responsive-app)<br><br>
-
-
+[Rollup plugin](https://www.npmjs.com/package/rollup-plugin-responsive-app) or [Webpack plugin](https://www.npmjs.com/package/webpack-plugin-responsive-app)
 
 This package will be installed as a dependency.
 
 Check below the documentation for demo, options and notes:
 
 ## Demo
-The plugin will make sure app proportions are the same across all screen resolutions:
+The plugin will make sure your app proportions are the same across all screen resolutions:
 
 ![Responsive app demo](demo.gif)
 

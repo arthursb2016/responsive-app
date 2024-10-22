@@ -2,7 +2,7 @@ import queries from './queries'
 import { Options } from './types'
 import { browserFontSizeDiffVarName } from './constants'
 
-export default (mobileQueries: string | null, transformations?: string) => {
+export default (mobileQueries: string | null, transformations: string | null) => {
   return `
     if (typeof window !== 'undefined') {
       const baseFontSize = 16
@@ -37,7 +37,7 @@ export default (mobileQueries: string | null, transformations?: string) => {
       }
 
       const addTransformations = function() {
-        if ('${transformations}' === 'undefined' || '${transformations}' === '') return
+        if ('${transformations}' === 'null') return
         const style = document.createElement('style')
         style.setAttribute('type', 'text/css')
         style.setAttribute('data-responsive-app-transformations', 'true')

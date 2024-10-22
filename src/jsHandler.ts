@@ -25,9 +25,9 @@ export default (options: Options, code: string, id: string, transformations?: st
   const mobileQueries = getMobileQueries(options)
   if (isHtmlFile) {
     const index = code.indexOf('</body>')
-    magicString.prependLeft(index, `<script>${getResponsiveScript(mobileQueries, transformations)}</script>`)
+    magicString.prependLeft(index, `<script>${getResponsiveScript(mobileQueries, transformations || null)}</script>`)
   } else {
-    magicString.append(`\n\n(function() {\n${getResponsiveScript(mobileQueries, transformations)}\n}())`)
+    magicString.append(`\n\n(function() {\n${getResponsiveScript(mobileQueries, transformations || null)}\n}())`)
   }
 
   return {
