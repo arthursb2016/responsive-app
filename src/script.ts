@@ -28,20 +28,20 @@ export default (mobileQueries: string | null, transformations: string | null) =>
       }
 
       const addMobileCentralization = function() {
-        if ('${mobileQueries}' === 'null') return
+        if ('${mobileQueries}' === 'null' || '${mobileQueries}' === null) return
         const style = document.createElement('style')
         style.setAttribute('type', 'text/css')
         style.setAttribute('data-responsive-app-mobile', 'true')
-        style.textContent = \"${mobileQueries!.replace(/\n/g, '')}\"
+        style.textContent = \"${(mobileQueries || '').replace(/\n/g, '')}\"
         document.head.appendChild(style)
       }
 
       const addTransformations = function() {
-        if ('${transformations}' === 'null') return
+        if ('${transformations}' === 'null' || '${transformations}' === null) return
         const style = document.createElement('style')
         style.setAttribute('type', 'text/css')
         style.setAttribute('data-responsive-app-transformations', 'true')
-        style.textContent = \"${transformations!.replace(/\n/g, '')}\"
+        style.textContent = \"${(transformations || '').replace(/\n/g, '')}\"
         document.head.appendChild(style)
       }
 
