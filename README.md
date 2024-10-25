@@ -10,7 +10,7 @@ This package contains the core functionalities for plugins that will automatical
 This package will be installed as a dependency.
 
 ## Demo
-The plugin will make sure your app proportions and relative sizes are all the same across all screen resolutions:
+The plugin will make sure your app proportions and relative sizes are all the same across different resolutions:
 
 ![Responsive app demo](demo.gif)
 
@@ -24,25 +24,26 @@ The plugin will:
     3. Adds [css media queries](https://github.com/arthursb2016/responsive-app/blob/master/src/queries.ts)
     4. Adds centralization rules for mobile screens
     5. Adds the app transformations (pixels to rem) rules
-    6. Adds an event listener the window resize, which updates the HTML tag font-size
-2. Pre-process your CSS definitions: by creating new style rules that overwrite pixel definitos to the equivalent rem values
-3. Notice the HTML font-size from your page to be different in each screen resolution. All properties with rem values will respond and adjust accordingly
+    6. Adds a window resize event listener, that updates the HTML tag font-size
+2. Pre-process your CSS definitions, during development, by creating style rules that overwrite pixel definitions to their equivalent rem values
+3. Notice your app HTML font-size to be different in each screen resolution. All properties with rem values will respond and adjust accordingly
 
 ## Beta phase
 
 We are aiming to make the web responsive by one-line installation 🚀
 
-Testing the solution across diversed contexts will enable us to make the solution the most comprehensive possible.
+Testing the solution across diverse contexts will enable us to build the most comprehensive solution as possible.
 
 How to test:
 
 1. Install either plugin (Rollup or Webpack) in your fresh or existing app
+    1. If you have existing responsive rules, bypass them
 2. Check your interface across multiple resolutions
-3. Then let me know how it worked for you :)
+3. Let me know how it worked for you :)
 
-You can reach out to me in [LinkedIn](https://www.linkedin.com/in/artsborba/) or open a Github issue to clear doubts, share feedback or demonstrate your context (either working or not)
+You can reach out to me in [LinkedIn](https://www.linkedin.com/in/artsborba/) or open a [Github issue](https://github.com/arthursb2016/responsive-app/issues) to clear doubts, share feedback or demonstrate your context (either working or not)
 
-Now check below the options you can pass to the plugin constructor:
+Now check below options you can pass to the plugin constructor:
 
 
 ## Options
