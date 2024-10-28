@@ -1,4 +1,3 @@
-import queries from './queries'
 import { Options } from './types'
 import { browserFontSizeDiffVarName } from './constants'
 
@@ -6,25 +5,36 @@ export default (mobileQueries: string | null, transformations: string | null) =>
   return `
     if (typeof window !== 'undefined') {
       const baseFontSize = 16
-    
-      const updateHtmlFontSize = function() {
-        const htmlElement = document.querySelector('html');
+      const segments = { width: 80, height: 45 }
+      const preciseBreakpoints = { width: 1320, height: 720 }
+
+      function getVirtualRemFontSize(width, height) {
+        const isLandscape = width > height
+        const widthSegment = isLandscape ? segments.width : segments.height
+        const heightSegment = isLandscape ? segments.height : segments.width
+        const preciseWidthBreakpoint = isLandscape ? preciseBreakpoints.width : preciseBreakpoints.height
+        const preciseHeightBreakpoint = isLandscape ? preciseBreakpoints.height : preciseBreakpoints.width
+        let X = width > preciseWidthBreakpoint ? widthSegment : widthSegment - Math.floor((preciseWidthBreakpoint - width) / (widthSegment / 2))
+        let Y = height > preciseHeightBreakpoint ? heightSegment : heightSegment - Math.floor((preciseHeightBreakpoint - height) / (heightSegment / 2))
+        return Math.round(((width / X) + (height / Y)) / 2)
+      }
+
+      const setBrowserFontSizeDiff = function(htmlElement) {
         htmlElement.style.removeProperty('font-size');
         const browserFontSize = window.getComputedStyle(htmlElement).getPropertyValue('font-size');
-
         const browserDifference = Number(browserFontSize.replace('px', '')) - baseFontSize;
         document.documentElement.style.setProperty('${browserFontSizeDiffVarName}', browserDifference + 'px')
+      }
 
-        const vRem = window.getComputedStyle(document.documentElement).getPropertyValue('--v-rem');
+      const setVirtualRemFontSize = function(htmlElement) {
+        const vRem = getVirtualRemFontSize(window.innerWidth, window.innerHeight)
         htmlElement.style.setProperty('font-size', vRem + 'px')
       }
 
-      const addVirtualRemQueries = function() {
-        const style = document.createElement('style')
-        style.setAttribute('type', 'text/css')
-        style.setAttribute('data-responsive-app', 'true')
-        style.textContent = \"${queries.replace(/\n/g, '')}\"
-        document.head.appendChild(style)
+      const updateHtmlFontSize = function() {
+        const htmlElement = document.querySelector('html');
+        setBrowserFontSizeDiff(htmlElement)
+        setVirtualRemFontSize(htmlElement)
       }
 
       const addMobileCentralization = function() {
@@ -47,7 +57,6 @@ export default (mobileQueries: string | null, transformations: string | null) =>
 
       const initResponsive = function() {
         window.addEventListener('resize', updateHtmlFontSize)
-        addVirtualRemQueries()
         addMobileCentralization()
         addTransformations()
         updateHtmlFontSize()
