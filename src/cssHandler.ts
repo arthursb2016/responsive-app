@@ -4,7 +4,7 @@ import { htmlTagBaseFontSize, ignoreResponsiveAppClass, browserFontSizeDiffVarNa
 import { handleMobileDefaults, transformPixelsDefault } from './options'
 
 const pxToRemRegExp = /(\d+)px/g
-const cssSelectorRegExp = /([.#\w\-\s,:]+)\s*\{([^}]+?)\}/gs
+const cssSelectorRegExp = /([.#\w\-\s,:]+)\s*\{([^}]+?)\}/g
 const propRegex = /([\w-]+)\s*:\s*([^}]+)/g
 
 function getRemValue(value: number) {
@@ -116,6 +116,20 @@ function findInsertionIndex(str: string) {
   } while (searchString && startIndex === -1)
 
   return closingQuoteIndex
+}
+
+export function getMobileQueries(options: Options): string | null {
+  if (!options.handleMobile) return null
+  const params = {
+    ...handleMobileDefaults,
+    ...(typeof options.handleMobile === 'object' ? options.handleMobile : {})
+  }
+  let queries = `@media (orientation: portrait) and (max-width: ${params.breakpoint}) {`
+  params.centralizeText.forEach(function (selector) {
+    queries += `${selector}:not(.${ignoreResponsiveAppClass}) { text-align: center }`
+  })
+  queries += '}'
+  return queries
 }
 
 export default (options: Options, code: string, id: string) => {

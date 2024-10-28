@@ -13,8 +13,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
-    "prepublishOnly": "npm run build"
+    "build": "rollup -c --bundleConfigAsCjs && npm run browserify",
+    "prepublishOnly": "npm run build",
+    "browserify": "tsc src/browserify.ts --outDir temp && browserify temp/browserify.js -t [ babelify --presets [ '@babel/preset-env' ] ] -o dist/responsive-app.js && rm -rf temp"
   },
   "keywords": [
     "responsive",
@@ -32,9 +33,14 @@
   "author": "Arthur Borba <artsborba@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
     "@rollup/plugin-commonjs": "^28.0.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/node": "^22.5.5",
+    "babel": "^6.23.0",
+    "babelify": "^10.0.0",
     "rollup": "^3.29.5",
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.7.0",
