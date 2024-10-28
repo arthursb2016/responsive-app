@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs && npm run browserify",
     "prepublishOnly": "npm run build",
-    "browserify": "tsc src/browserify.ts --outDir temp && browserify temp/browserify.js -t [ babelify --presets [ '@babel/preset-env' ] ] -o dist/responsive-app.js && rm -rf temp"
+    "browserify": "tsc src/browserify.ts --outDir temp && browserify temp/browserify.js -t [ babelify --presets [ '@babel/preset-env' ] ] | terser -c -m -o browser/responsive-app.min.js && rm -rf temp"
   },
   "keywords": [
     "responsive",
@@ -43,6 +43,7 @@
     "babelify": "^10.0.0",
     "rollup": "^3.29.5",
     "rollup-plugin-typescript2": "^0.36.0",
+    "terser": "^5.36.0",
     "tslib": "^2.7.0",
     "typescript": "^5.6.2"
   },
