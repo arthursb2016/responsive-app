@@ -11,13 +11,13 @@ There are two usage methods:
 1. [Rollup and Vite](https://www.npmjs.com/package/rollup-plugin-responsive-app) or
 2. [Webpack](https://www.npmjs.com/package/webpack-plugin-responsive-app)
 
-This package will be installed as a dependency.
+_This package will be installed as a dependency._
 
 #### Script tag (experimental)
 
 ```HTML
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/responsive-app@1.0.6-beta.0/browser-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/responsive-app@1.0.7-beta.0/dist/browser-bundle.min.js"></script>
 </head>
 ```
 
