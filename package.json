@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs && npm run browserify",
     "prepublishOnly": "npm run build",
-    "browserify": "tsc src/browserify.ts --outDir temp && browserify temp/browserify.js -t [ babelify --presets [ '@babel/preset-env' ] ] | terser -c -m -o browser/responsive-app.min.js && rm -rf temp"
+    "browserify": "tsc src/browserify.ts --outDir temp && browserify temp/browserify.js -t [ babelify --presets [ '@babel/preset-env' ] ] | terser -c -m -o dist/browser-bundle.min.js && rm -rf temp"
   },
   "keywords": [
     "responsive",

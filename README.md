@@ -1,32 +1,42 @@
 # responsive-app [beta]
 
-This package contains the core functionalities for plugins that will automatically handle your app responsiveness.
+This package contains the core functionalities to automatically handle your app responsiveness.
 
-## Usage 
+## Usage
 
-1. [Rollup and Vite plugin](https://www.npmjs.com/package/rollup-plugin-responsive-app) or
-2. [Webpack plugin](https://www.npmjs.com/package/webpack-plugin-responsive-app)
+There are two usage methods:
+
+#### Plugins (recommended)
+
+1. [Rollup and Vite](https://www.npmjs.com/package/rollup-plugin-responsive-app) or
+2. [Webpack](https://www.npmjs.com/package/webpack-plugin-responsive-app)
 
 This package will be installed as a dependency.
 
-## Demo
-The plugin will make sure your app proportions and relative sizes are all the same across different resolutions:
+#### Script tag (experimental)
 
-![Responsive app demo](demo.gif)
+```HTML
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/responsive-app@1.0.6-beta.0/browser-bundle.min.js"></script>
+</head>
+```
+
+## Demo
+The script will make sure your app proportions and relative sizes are all the same across different resolutions:
+
+![Responsive app demo](responsive-app-demo.gif)
 
 ## How it's done
 
-The plugin will:
+#### [A script](https://github.com/arthursb2016/responsive-app/blob/master/src/script.ts) will be added to your app entry point, which:
 
-1. Add [a script](https://github.com/arthursb2016/responsive-app/blob/master/src/script.ts) to your app entry point, which:
-    1. Has 8kb
-    2. Runs once the documet is ready
-    3. Adds [css media queries](https://github.com/arthursb2016/responsive-app/blob/master/src/queries.ts)
-    4. Adds centralization rules for mobile screens
-    5. Adds the app transformations (pixels to rem) rules
-    6. Adds a window resize event listener, that updates the HTML tag font-size
-2. Pre-process your CSS definitions, during development, by creating style rules that overwrite pixel definitions to their equivalent rem values
-3. Notice your app HTML font-size to be different in each screen resolution. All properties with rem values will respond and adjust accordingly
+1. Has 8kb
+2. Runs once the document is ready
+3. Adds centralization rules for mobile screens
+4. Adds the style transformations, converting pixels values to rem
+5. Adds a window resize event listener that updates the HTML tag font-size based on the screen resolution and browser font-size
+
+Notice your app HTML font-size to be different in each screen resolution. All properties with rem values will respond and adjust accordingly
 
 ## Beta phase
 
@@ -36,14 +46,14 @@ Testing the solution across diverse contexts will enable us to build the most co
 
 How to test:
 
-1. Install either plugin (Rollup or Webpack) in your fresh or existing app
+1. Install or add the script tag into your fresh or existing app
     1. If you have existing responsive rules, bypass them
 2. Check your interface across multiple resolutions
 3. Let me know how it worked for you :)
 
 You can reach out to me in [LinkedIn](https://www.linkedin.com/in/artsborba/) or open a [Github issue](https://github.com/arthursb2016/responsive-app/issues) to clear doubts, share feedback or demonstrate your context (either working or not)
 
-Now check below options you can pass to the plugin constructor:
+Now check below options you can pass to the plugin constructor (only available for plugins):
 
 
 ## Options
@@ -91,4 +101,6 @@ You can also add the `ignore-responsive-app` class to any HTML element so the ab
 </div>
 ```
 
-Note: Inline styles transformations (e.g. `<div style="font-size: 24px">...` to `<div style="font-size: 1.5rem">...`) are not supported yet.
+#### Known limitations
+
+Inline styles transformations (e.g. `<div style="font-size: 24px">...` to `<div style="font-size: 1.5rem">...`) are not supported on plugins yet

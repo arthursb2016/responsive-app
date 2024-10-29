@@ -1,3 +1,8 @@
+/*!
+  * The responsive-app package <https://www.npmjs.com/package/responsive-app>
+  * @author   Arthur Borba <https://arthurborba.dev>
+  * @license  MIT
+  */
 import handleCss, { getMobileQueries } from './cssHandler'
 import handleJs from './jsHandler'
 import { handleMobileDefaults, transformPixelsDefault } from './options'
