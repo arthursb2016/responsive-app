@@ -91,6 +91,7 @@ You can also add the `ignore-responsive-app` class to any HTML element so the ab
 .width-300 {
     width: 300px;
 }
+/* Auto-generated class definition - done by the transformation script */
 .width-300:not(.ignore-responive-app) {
     width: 18.75rem;
 }
