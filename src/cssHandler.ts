@@ -1,6 +1,6 @@
 import MagicString from 'magic-string'
 import { Options, TransformPixelsOptions, HandleMobileOptions } from './types'
-import { htmlTagBaseFontSize, ignoreResponsiveAppClass, browserFontSizeDiffVarName } from './constants'
+import { htmlTagBaseFontSize, ignoreResponsiveAppClass, browserFontSizeDiffVarName, cssOpeningQuoteStatements } from './constants'
 import { handleMobileDefaults, transformPixelsDefault } from './options'
 
 const pxToRemRegExp = /(\d+)px/g
@@ -98,10 +98,7 @@ function handleMobile(code: string, options: HandleMobileOptions) {
 }
 
 function findInsertionIndex(str: string) {
-  const openingQuoteStatements = [
-    'const __vite__css = "',
-    'export default "'
-  ]
+  const openingQuoteStatements = [...cssOpeningQuoteStatements]
   let closingQuoteIndex = -1
   let searchString
   let startIndex
